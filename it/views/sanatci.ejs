@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sanatçı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <style>
+      .menu
+   {
+       background: lightgray;
+   }
+   .menu ul li
+   {
+       padding: 10px;
+       float: left;
+   }
+   .menu ul li:hover
+   {
+       position: relative;
+   }
+   .menu ul li ul
+   {
+       background: lightgray;
+       display: none;
+       position: absolute;
+       left: 0;
+       margin-top: 10px;
+       width: 300px;
+   }
+   .menu ul li:hover ul
+   {
+       display: block;
+       clear: both;
+   }
+         </style>
+</head>
+
+<body>
+  <div class="menu">
+    <ul>
+        <li><a href="muziktur">Muzik Türleri</a>
+            <ul>
+                <li><a href="muzikTurEkle">Muzik Tür Ekle</a></li>
+            </ul>
+        </li>
+        <li><a href="sanatci">Sanatçılar</a>
+             <ul>
+                <li><a href="sanatciEkle">Sanatçı Ekle</a></li>
+            </ul>
+        </li>
+        <li><a href="album">Albümler</a>
+          <ul>
+             <li><a href="albumekle">Albüm Ekle</a></li>
+         </ul>
+     </li>
+    </ul>
+    <div style="clear: both"></div>
+  </div> 
+  
+   <div class="container card mt-5">
+            <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">SANATÇI İD</th>
+                        <th scope="col">SANATÇI ADI</th>
+                        <th scope="col">SANATÇI YAŞIYOR MU</th>
+                        <th scope="col">SANATÇI DOĞUM TARİHİ</th>
+                        <th scope="col">EKLEME TARİHİ</th>
+                        <th scope="col">GÜNCELLE</th>
+                        <th scope="col">SİL</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <a href="sanatciEkle" class="button is-info" style="margin-left:1000px;">Sanatçı Ekle</a>
+                            <% sanatci.forEach(function(item){ %>
+                              
+                                <tr>
+                                        <th scope="row"> <%=item.SanatciId%></th>
+                                        <td> <%=item.SanatciAdi%></td>
+                                        <td> <%=item.SanatciYasiyormu%></td>
+                                        <td> <%=item.SanatciDogumTarihi%></td>
+                                        <td> <%=item.EklenmeTarihi%></td>
+                                        <td> <a href="sanatciGuncelle?id=<%=item.SanatciId%>" class="button is-primary">Güncelle</a>
+                                          <td>
+                                              <button class="button is-primary modal-button" data-id="<%=item.SanatciId%>" data-target="#myModal" aria-haspopup="true">Sil</button>
+                                            </td>
+                                      </tr>
+                              <% }); %>
+                    
+                     
+                    </tbody>
+                  </table>
+       
+    </div> 
+    <div class="modal" id="myModal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">Silmek istediğinizden emin misiniz ?
+              <a class="btn-danger deleteBtn"> Sil  </a>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+  
+    <script type="text/javascript">
+      document.querySelectorAll('.modal-button').forEach(function(el) {
+         el.addEventListener('click', function() {
+           var target = document.querySelector(el.getAttribute('data-target'));
+           
+          var deleteBtn = target.querySelector('.deleteBtn');
+          deleteBtn.setAttribute('href', 'sanatciSil?id=' + el.getAttribute('data-id'));
+  
+           target.classList.add('is-active');
+           target.querySelector('.modal-close').addEventListener('click',   function() {
+               target.classList.remove('is-active');
+           });
+         });
+       });
+   </script>
+</body>
+
+</html>

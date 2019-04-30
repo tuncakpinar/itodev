@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sanatçı Ekle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <style>
+      .menu
+   {
+       background: lightgray;
+   }
+   .menu ul li
+   {
+       padding: 10px;
+       float: left;
+   }
+   .menu ul li:hover
+   {
+       position: relative;
+   }
+   .menu ul li ul
+   {
+       background: lightgray;
+       display: none;
+       position: absolute;
+       left: 0;
+       margin-top: 10px;
+       width: 300px;
+   }
+   .menu ul li:hover ul
+   {
+       display: block;
+       clear: both;
+   }
+         </style>
+</head>
+<div class="menu">
+  <ul>
+      <li><a href="muziktur">Muzik Türleri</a>
+          <ul>
+              <li><a href="muzikTurEkle">Muzik Tür Ekle</a></li>
+          </ul>
+      </li>
+      <li><a href="sanatci">Sanatçılar</a>
+           <ul>
+              <li><a href="sanatciEkle">Sanatçı Ekle</a></li>
+          </ul>
+      </li>
+      <li><a href="album">Albümler</a>
+        <ul>
+           <li><a href="albumekle">Albüm Ekle</a></li>
+       </ul>
+   </li>
+  </ul>
+  <div style="clear: both"></div>
+</div> 
+<form style="margin-top:50px;" method="POST" action="sanatciEkle">
+        <div class="field">
+                <label class="label" >Sanatçı Adı</label>
+                <div class="control">
+                  <input class="input" type="text" name="sanatciAdi" placeholder="Sanatçı Adı">
+                </div>
+              </div>
+              <div class="field">
+                  <label class="label">Sanatçı Yaşıyor Mu</label>
+                  <div class="control">
+                    <input class="input" type="text" name="sanatciYasiyormu" placeholder="Lütffen sadece '1' veya '0' giriniz">
+                  </div>
+                </div>
+                <div class="field">
+                    <label class="label">Sanatçı Doğum Tarihi</label>
+                    <div class="control">
+                      <input class="input" type="text" name="sanatciDogumTarihi" placeholder="Gün Ay Yıl Birleşik Olarak Giriniz" >
+                    </div>
+                  </div>
+              
+              <div class="field">
+                <label class="label">Eklenme Tarihi</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="bulma-calender" name="eklenmeTarihi" type="date" >
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
+                
+              <div style="margin-top:15px;" class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link">Ekle</button>
+                </div>
+                <div class="control">
+                    <a href="sanatci"  class="button is-text">İptal</a>
+                </div>
+              </div>
+</form>

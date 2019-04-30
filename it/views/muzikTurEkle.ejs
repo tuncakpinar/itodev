@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Müzik Tür Ekle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <style>
+      .menu
+   {
+       background: lightgray;
+   }
+   .menu ul li
+   {
+       padding: 10px;
+       float: left;
+   }
+   .menu ul li:hover
+   {
+       position: relative;
+   }
+   .menu ul li ul
+   {
+       background: lightgray;
+       display: none;
+       position: absolute;
+       left: 0;
+       margin-top: 10px;
+       width: 300px;
+   }
+   .menu ul li:hover ul
+   {
+       display: block;
+       clear: both;
+   }
+         </style>
+</head>
+<div class="menu">
+  <ul>
+      <li><a href="muziktur">Muzik Türleri</a>
+          <ul>
+              <li><a href="muzikTurEkle">Muzik Tür Ekle</a></li>
+          </ul>
+      </li>
+      <li><a href="sanatci">Sanatçılar</a>
+           <ul>
+              <li><a href="sanatciEkle">Sanatçı Ekle</a></li>
+          </ul>
+      </li>
+      <li><a href="album">Albümler</a>
+        <ul>
+           <li><a href="albumekle">Albüm Ekle</a></li>
+       </ul>
+   </li>
+  </ul>
+  <div style="clear: both"></div>
+</div> 
+<form style="margin-top:50px;" method="POST" action="muzikTurEkle">
+        <div class="field">
+                <label class="label" >Muzik Tür Adı</label>
+                <div class="control">
+                  <input class="input" type="text" name="muzikTurAdi" placeholder="Muzik Tür Adı">
+                </div>
+              </div>
+              <div style="margin-top:15px;" class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link">Ekle</button>
+                </div>
+                <div class="control">
+                  <a href="muziktur" class="button is-text">İptal</a>
+                </div>
+              </div>
+</form>
