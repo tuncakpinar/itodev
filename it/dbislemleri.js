@@ -1,16 +1,22 @@
 const mq = require('mssql');
 const dosyasistemi = require('fs');
 const moment = require('moment');
+var Connection = require('tedious').Connection;
+var Request = require('tedious').Request;
 
 var config = {
-    user: 'sa',
-    password: 'DENEME1234',
-    server: 'localhost',
-    database: 'MEDIPILIMDB',
-    port:1433,
-    "dialect": "mssql",
-    "dialectOptions": {
-        "instanceName": "SQLEXPRESS"
+    authentication: {
+        options: {
+            userName: 'tncakpnr', // update me
+            password: 'tunc.Ua98' // update me
+        },
+        type: 'default'
+    },
+    server: 'itakpnr.database.windows.net', // update me
+    options:
+    {
+        database: 'MEDIPILIMDB', //update me
+        encrypt: true
     }
 };
 
@@ -80,7 +86,7 @@ module.exports.Sanatcigetir = function (req, res) {
     mq.connect(config, function (err) {
         if (err) console.log(err);
         var request = new mq.Request();
-        request.query("select *  from Sanatci ", function (err, sanatcis) {
+        request.query("select *, case SanatciYasiyormu when 1 then 'yaşıyor ' when 0 then 'ölü' end as sanatciyaşıyormu  from Sanatci ", function (err, sanatcis) {
             if (err) console.log(err)
             mq.close();
             res.render('sanatci', { sanatci: sanatcis.recordset });
