@@ -5,19 +5,17 @@ var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
 var config = {
-    authentication: {
-        options: {
-            userName: 'tncakpnr', // update me
-            password: 'tunc.Ua98' // update me
-        },
-        type: 'default'
-    },
-    server: 'itakpnr.database.windows.net', // update me
-    options:
-    {
-        database: 'MEDIPILIMDB', //update me
-        encrypt: true
+    user: 'tncakpnr',
+    password: 'tunc.Ua98',
+    server: 'itakpnr.database.windows.net',
+    database: 'MEDIPILIMDB',
+    encrypt: true ,
+    "dialect": "mssql",
+    "dialectOptions": {
+        "instanceName": "SQLEXPRESS"
+        
     }
+    
 };
 
 module.exports.Albumgetir = function (req, res) {
